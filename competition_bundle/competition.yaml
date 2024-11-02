@@ -1,0 +1,73 @@
+# Competition YAML file : general challenge defition and settings
+title: ARI510
+admin_names: steverw
+allow_public_submissions: false
+allow_teams: false
+anonymous_leaderboard: false
+description: Sample for ARI510
+start_date: 2024-11-01 00:00:00+00:00
+competition_docker_image: 'codalab/codalab-legacy:py37'
+disallow_leaderboard_modifying: true
+enable_detailed_results: true
+enable_forum: true
+enable_per_submission_metadata: true
+end_date: 2024-12-01 00:00:00+00:00
+force_submission_to_leaderboard: true
+has_registration: false
+show_datasets_from_yaml: true
+
+# Documentation pages
+html:
+  overview: overview.html
+  evaluation: evaluation.html
+  data: data.html
+  terms: terms.html
+image: logo.png
+
+# Phases
+phases:
+  # Development
+  1:
+    color: green
+    description: 'Submit your submission.zip with a file called preds.txt'
+    execution_time_limit: 500
+    input_data: input.zip
+    is_scoring_only: true
+    label: Development
+    max_submissions: 100
+    max_submissions_per_day: 15
+    phasenumber: 1
+    public_data: input.zip
+    reference_data: reference.zip
+    scoring_program: scoring_program.zip
+    start_date: 2024-11-1 00:00:00+00:00 # YYYY-MM-DD
+    starting_kit: starter_kit.zip
+
+# Leaderboard
+leaderboard:
+  leaderboards:
+    Results: &RESULTS
+        label: Results
+        rank: 1
+
+  columns:
+    accuracy:
+      label: Accuracy
+      leaderboard: *RESULTS
+      numeric_format: 4
+      rank: 1
+    f1-score:
+      label: F1-Score
+      leaderboard: *RESULTS
+      numeric_format: 2
+      rank: 2
+    precision:
+      label: Precision
+      leaderboard: *RESULTS
+      numeric_format: 2
+      rank: 3
+    recall:
+      label: Recall
+      leaderboard: *RESULTS
+      numeric_format: 2
+      rank: 4
